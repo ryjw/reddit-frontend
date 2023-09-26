@@ -1,11 +1,11 @@
 import { useOutletContext, useParams } from "react-router-dom";
 import NotFound from "../components/NotFound.jsx";
 import CreatePost from "./CreatePost.jsx";
-import { useEffect, useState } from "react";
 import DisplayPost from "./DisplayPost.jsx";
 
 export default function Subreddit() {
   const { posts, subreddits } = useOutletContext();
+  // get the name of the path
   const { subredditName } = useParams();
 
   // find the correct subreddit object from the array of subreddits
