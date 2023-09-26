@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { API } from "./API/index";
+import { API } from "./API/index.js";
 import Navbar from "./components/Navbar";
 import Subreddits from "./components/Subreddits";
 import { useEffect, useState } from "react";
@@ -30,7 +30,15 @@ function App() {
   }
 
   async function fetchSubreddits() {
-    fetch(`${API}/subreddits/`);
+    const res = await fetch(`${API}/subreddits`);
+    const info = await res.json();
+    setSubreddits(info.subreddits);
+  }
+
+  async function fetchPosts() {
+    const res = await fetch(`${API}/posts`);
+    const info = await res.json();
+    setPosts(info.posts);
   }
 
   useEffect(() => {
@@ -39,6 +47,7 @@ function App() {
 
   useEffect(() => {
     fetchSubreddits();
+    fetchPosts();
   }, []);
 
   return (
@@ -46,7 +55,7 @@ function App() {
       <Navbar user={user} setToken={setToken} />
       <div className="flex">
         <Subreddits subreddits={subreddits} />
-        <Outlet context={(token, posts)} />
+        <Outlet context={{ token, posts, subreddits }} />
       </div>
     </div>
   );

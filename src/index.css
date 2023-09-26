@@ -1,9 +1,18 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 div {
   border: 1px solid grey;
 }
 
 .flex {
   display: flex;
+}
+
+.post {
+  margin: 10px;
+  padding: 10px;
 }
 
 #subreddits {

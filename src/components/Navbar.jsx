@@ -4,12 +4,11 @@ import Subreddits from "./Subreddits";
 export default function Navbar({ user }) {
   return (
     <>
-      <div>
+      <div id="navbar">
         <NavLink to={"/"}>Home</NavLink>
-        <div id="navbar">
-          <NavLink to={"/login"}>Login</NavLink>
-          <NavLink to={"/register"}>Register</NavLink>
-        </div>
+        <NavLink to={"/login"}>Login</NavLink>
+        <NavLink to={"/signup"}>Sign Up</NavLink>
+        <NavLink to={"/"}>Logout</NavLink>
       </div>
     </>
   );

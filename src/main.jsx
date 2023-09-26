@@ -4,6 +4,7 @@ import App from "./App.jsx";
 import Login from "./components/Login.jsx";
 import SignUp from "./components/SignUp.jsx";
 import Subreddit from "./components/Subreddit.jsx";
+import NotFound from "./components/NotFound.jsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./components/Home.jsx";
@@ -16,7 +17,8 @@ const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "signup", element: <SignUp /> },
       { path: "/", element: <Home /> },
-      { path: ":subreddit", element: <Subreddit /> },
+      { path: ":subredditName", element: <Subreddit /> },
+      { path: "*", element: <NotFound /> },
     ],
   },
 ]);

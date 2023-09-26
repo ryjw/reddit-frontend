@@ -1,9 +1,16 @@
-export default function Subreddits() {
+import { NavLink } from "react-router-dom";
+
+export default function Subreddits({ subreddits }) {
   return (
     <div>
       <ul>
-        <li>List1</li>
-        <li>List2</li>
+        {subreddits.map((subreddit) => {
+          return (
+            <li key={subreddit.id}>
+              <NavLink to={`${subreddit.name}`}>{subreddit.name}</NavLink>{" "}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

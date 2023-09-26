@@ -1,1 +1,1 @@
-export const API = "https://reddit-backend-j4r5.onrender.com/";
+export const API = "https://reddit-backend-j4r5.onrender.com";
