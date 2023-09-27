@@ -1,6 +1,5 @@
 import { useOutletContext, useParams } from "react-router-dom";
 import NotFound from "../components/NotFound.jsx";
-import CreatePost from "./CreatePost.jsx";
 import DisplayPost from "./DisplayPost.jsx";
 
 export default function Subreddit() {
@@ -13,14 +12,13 @@ export default function Subreddit() {
     (subreddit) => subredditName === subreddit.name
   );
   // filter the posts according to subreddit
-  const filteredPosts = posts.filter(
-    (post) => post.subredditId === subreddit.id
-  );
-  console.log(filteredPosts);
+  let filteredPosts;
+  if (subreddit) {
+    filteredPosts = posts.filter((post) => post.subredditId === subreddit.id);
+  }
 
   return subreddit ? (
     <div>
-      <CreatePost />
       {filteredPosts.map((post) => {
         if (!post.parentId) {
           return <DisplayPost post={post} />;

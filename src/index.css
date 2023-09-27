@@ -24,3 +24,16 @@ div {
   display: flex;
   justify-content: space-around;
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 80%;
+}
+
+.form {
+  height: 150px;
+  margin: 20px;
+  padding: 20px;
+}

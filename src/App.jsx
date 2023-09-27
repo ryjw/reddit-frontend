@@ -52,10 +52,10 @@ function App() {
 
   return (
     <div>
-      <Navbar user={user} setToken={setToken} />
+      <Navbar user={user} setToken={setToken} setUser={setUser} />
       <div className="flex">
         <Subreddits subreddits={subreddits} />
-        <Outlet context={{ token, posts, subreddits }} />
+        <Outlet context={{ token, posts, subreddits, setToken }} />
       </div>
     </div>
   );
