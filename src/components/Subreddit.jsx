@@ -3,7 +3,7 @@ import NotFound from "../components/NotFound.jsx";
 import DisplayPost from "./DisplayPost.jsx";
 
 export default function Subreddit() {
-  const { posts, subreddits } = useOutletContext();
+  const { posts, subreddits, user } = useOutletContext();
   // get the name of the path
   const { subredditName } = useParams();
 
@@ -21,7 +21,7 @@ export default function Subreddit() {
     <div>
       {filteredPosts.map((post) => {
         if (!post.parentId) {
-          return <DisplayPost post={post} />;
+          return <DisplayPost post={post} user={user} />;
         }
       })}
     </div>

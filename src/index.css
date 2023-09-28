@@ -37,3 +37,12 @@ div {
   margin: 20px;
   padding: 20px;
 }
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.inline {
+  display: inline;
+}
