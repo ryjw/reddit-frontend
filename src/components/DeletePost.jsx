@@ -16,7 +16,7 @@ export default function DeletePost({ post }) {
   }
 
   return (
-    <button onClick={(e) => handleDeletePost(e)}>
+    <button className="icon-button" onClick={(e) => handleDeletePost(e)}>
       <GoTrash />
     </button>
   );

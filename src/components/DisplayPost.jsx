@@ -33,18 +33,23 @@ export default function DisplayPost({ post }) {
         <div key={post.id} className="flex">
           <Votes post={post} />
           <div key={post.id}>
+            <h5>/{post.subreddit.name}/</h5>
             {<h2>{post.title}</h2>}
             <p>{post.text}</p>
             <h6 className="inline">by {post.user && post.user.username} </h6>
             {post.userId === user.id && (
-              <NavLink className="inline" to={`/post/${post.id}`}>
-                <BsPencilSquare />
-              </NavLink>
+              <button className="icon-button">
+                <NavLink className="inline" to={`/post/${post.id}`}>
+                  <BsPencilSquare />
+                </NavLink>{" "}
+              </button>
             )}
             {token && (
-              <Link to={`/reply/${post.id}`}>
-                <BsReply />
-              </Link>
+              <button className="icon-button">
+                <Link to={`/reply/${post.id}`}>
+                  <BsReply />
+                </Link>
+              </button>
             )}
             {post.userId === user.id && <DeletePost post={post} />}
             {post.children.length > 0 &&

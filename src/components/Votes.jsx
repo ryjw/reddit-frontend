@@ -56,6 +56,7 @@ export default function Votes({ post }) {
     token && (
       <div className="flex-column votes">
         <button
+          className="icon-button"
           onClick={() => {
             handleUpvote();
             deleteDownvote();
@@ -70,6 +71,7 @@ export default function Votes({ post }) {
             post.upvotes.length - post.downvotes.length}
         </div>
         <button
+          className="icon-button"
           onClick={() => {
             handleDownvote();
             deleteUpvote();

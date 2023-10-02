@@ -54,7 +54,12 @@ function App() {
     <div>
       <Navbar user={user} token={token} setToken={setToken} setUser={setUser} />
       <div className="flex">
-        <Subreddits subreddits={subreddits} />
+        <Subreddits
+          subreddits={subreddits}
+          user={user}
+          fetchPosts={fetchPosts}
+          token={token}
+        />
         <Outlet
           context={{
             token,
