@@ -59,14 +59,14 @@ export default function CreatePost() {
             value={title}
             cols="60"
             rows="1"
-            placeholder="title"
+            placeholder="Enter a title here..."
           ></textarea>
           <textarea
             onChange={(e) => setText(e.target.value)}
             value={text}
             cols="60"
             rows="10"
-            placeholder="Enter your post..."
+            placeholder="Enter your post here..."
           ></textarea>
           <button>Submit your post!</button>
         </form>

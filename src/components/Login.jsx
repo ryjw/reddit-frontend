@@ -28,7 +28,6 @@ export default function Login() {
       navigate("/");
     } else {
       setError(info.error);
-      consol;
     }
   }
   return (

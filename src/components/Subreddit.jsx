@@ -21,7 +21,7 @@ export default function Subreddit() {
     <div>
       {filteredPosts.map((post) => {
         if (!post.parentId) {
-          return <DisplayPost post={post} user={user} />;
+          return <DisplayPost post={post} user={user} key={post.id} />;
         }
       })}
     </div>

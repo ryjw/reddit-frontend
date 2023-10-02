@@ -1,3 +1,7 @@
 export default function NotFound() {
-  return <h1>Subreddit not found</h1>;
+  return (
+    <div className="flex-center">
+      <h1>Subreddit not found</h1>;
+    </div>
+  );
 }

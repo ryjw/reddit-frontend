@@ -1,22 +1,59 @@
-import { NavLink, useOutletContext } from "react-router-dom";
-import EditPost from "./EditPost";
+import { Link, NavLink, useOutletContext } from "react-router-dom";
+import { BsPencilSquare, BsReply } from "react-icons/bs";
+import Votes from "./Votes";
+import { useEffect, useState } from "react";
+import { API } from "../API";
+import DeletePost from "./DeletePost";
 
 export default function DisplayPost({ post }) {
-  const { user } = useOutletContext();
+  const { user, token, posts } = useOutletContext();
+  const [children, setChildren] = useState([]);
+
+  useEffect(() => {
+    setChildren([]);
+    if (post.children.length > 0) {
+      for (let i = 0; i < post.children.length; i++) {
+        fetchChild(post.children[i].id);
+      }
+    }
+  }, [posts]);
+
+  async function fetchChild(id) {
+    const res = await fetch(`${API}/posts/${id}`);
+    const info = await res.json();
+    if (info.success) {
+      setChildren((prevChildren) => [...prevChildren, info.post]);
+      console.log(info.post);
+    }
+  }
+
   return (
-    <div className="post">
-      {post.title && <h2>{post.title}</h2>}
-      <p>{post.text}</p>
-      <h6 className="inline">by {post.user && post.user.username} </h6>
-      {post.userId === user.id && (
-        <NavLink className="inline" to={`/post/${post.id}`}>
-          ✏️
-        </NavLink>
-      )}
-      {post.children &&
-        post.children.map((child) => {
-          return <DisplayPost post={child} />;
-        })}
-    </div>
+    post && (
+      <div key={post.id} className="post">
+        <div key={post.id} className="flex">
+          <Votes post={post} />
+          <div key={post.id}>
+            {<h2>{post.title}</h2>}
+            <p>{post.text}</p>
+            <h6 className="inline">by {post.user && post.user.username} </h6>
+            {post.userId === user.id && (
+              <NavLink className="inline" to={`/post/${post.id}`}>
+                <BsPencilSquare />
+              </NavLink>
+            )}
+            {token && (
+              <Link to={`/reply/${post.id}`}>
+                <BsReply />
+              </Link>
+            )}
+            {post.userId === user.id && <DeletePost post={post} />}
+            {post.children.length > 0 &&
+              children.map((child) => {
+                return <DisplayPost post={child} key={child.id} />;
+              })}
+          </div>
+        </div>
+      </div>
+    )
   );
 }

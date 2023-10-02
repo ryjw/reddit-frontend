@@ -56,7 +56,15 @@ function App() {
       <div className="flex">
         <Subreddits subreddits={subreddits} />
         <Outlet
-          context={{ token, posts, subreddits, setToken, fetchPosts, user }}
+          context={{
+            token,
+            posts,
+            subreddits,
+            setToken,
+            fetchPosts,
+            user,
+            fetchSubreddits,
+          }}
         />
       </div>
     </div>
