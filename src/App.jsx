@@ -59,6 +59,7 @@ function App() {
           user={user}
           fetchPosts={fetchPosts}
           token={token}
+          fetchSubreddits={fetchSubreddits}
         />
         <Outlet
           context={{

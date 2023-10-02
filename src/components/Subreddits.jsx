@@ -1,7 +1,13 @@
 import { NavLink } from "react-router-dom";
 import DeleteSubreddit from "./DeleteSubreddit";
 
-export default function Subreddits({ subreddits, fetchPosts, user, token }) {
+export default function Subreddits({
+  subreddits,
+  fetchPosts,
+  user,
+  token,
+  fetchSubreddits,
+}) {
   return (
     <div>
       <NavLink className="create-subreddit" to={"createsubreddit"}>
@@ -19,6 +25,7 @@ export default function Subreddits({ subreddits, fetchPosts, user, token }) {
                   user={user}
                   fetchPosts={fetchPosts}
                   token={token}
+                  fetchSubreddits={fetchSubreddits}
                 />
               )}
             </li>

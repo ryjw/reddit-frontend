@@ -23,7 +23,6 @@ export default function DisplayPost({ post }) {
     const info = await res.json();
     if (info.success) {
       setChildren((prevChildren) => [...prevChildren, info.post]);
-      console.log(info.post);
     }
   }
 

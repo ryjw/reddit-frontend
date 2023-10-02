@@ -2,7 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { API } from "../API";
 import { GoTrash } from "react-icons/go";
 
-export default function DeleteSubreddit({ subreddit, token, fetchPosts }) {
+export default function DeleteSubreddit({
+  subreddit,
+  token,
+  fetchPosts,
+  fetchSubreddits,
+}) {
   const navigate = useNavigate();
 
   async function handleDelete(e) {
@@ -13,6 +18,7 @@ export default function DeleteSubreddit({ subreddit, token, fetchPosts }) {
         Authorization: `Bearer ${token}`,
       },
     });
+    fetchSubreddits();
     fetchPosts();
     navigate("/");
   }
